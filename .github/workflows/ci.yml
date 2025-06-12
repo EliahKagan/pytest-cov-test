@@ -34,6 +34,12 @@ jobs:
       - name: Show some Cygwin packages
         run: cygcheck -cd python39 python39-pip python39-setuptools python39-wheel
 
+      - name: Show where the interpreter is
+        run: |
+          set -x
+          type python3.9
+          command -v python3.9 | od -An -ta
+
       - name: Set up virtualenv
         run: |
           python3.9 -m venv .venv

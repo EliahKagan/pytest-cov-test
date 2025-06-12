@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        shell: C:\cygwin\bin\bash.exe --login --norc -eo pipefail '{0}'
+        shell: C:\cygwin\bin\bash.exe --login --norc -eo pipefail -o igncr '{0}'
 
     steps:
       - name: Force LF line endings in initial checkout

@@ -8,7 +8,7 @@ version = "0.1.0"
 authors = [
     {name = "Eliah Kagan", email = "degeneracypressure@gmail.com"},
 ]
-description = "Simplified demonstration of GitPython#2052"
+description = "Simplified demonstration of GitPython #2052"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}

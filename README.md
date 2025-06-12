@@ -1,4 +1,4 @@
-# pytest-cov-test - Simplified demonstration of GitPython#2052
+# pytest-cov-test - Simplified demonstration of GitPython #2052
 
 This is a simplified demonstration of the mechanism underlying the bug fixed in
 [gitpython-developers/GitPython#2052](https://github.com/gitpython-developers/GitPython/pull/2052)

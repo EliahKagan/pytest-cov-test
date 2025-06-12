@@ -12,3 +12,13 @@ def test_subprocess():
         text=True,
     )
     assert proc.stderr == f"{sys.executable=}\n"
+
+
+def test_subprocess_nosite():
+    proc = subprocess.run(
+        [sys.executable, "-S", "reveal_interpreter.py"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert proc.stderr == f"{sys.executable=}\n"

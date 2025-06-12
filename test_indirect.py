@@ -4,7 +4,7 @@ import subprocess
 import sys
 
 
-def test_reveal_interpreter():
+def test_subprocess():
     proc = subprocess.run(
         [sys.executable, "reveal_interpreter.py"],
         check=True,

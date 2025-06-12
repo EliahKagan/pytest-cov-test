@@ -6,6 +6,21 @@ where a test that runs a subprocess, making an assertion about what the
 subprocess writes to stderr, can fail due to `CoverageWarning` messages
 produced in the subprocess by `pytest-cov`.
 
+## Running the test
+
+On Cygwin:
+
+```sh
+python3.9 -m venv .venv
+. .venv/bin/activate
+python -m pip install -U pip setuptools wheel
+pip install -e .
+```
+
+```sh
+pytest -v
+```
+
 ## The failure
 
 As there, it is specifically on Cygwin that this currently fails, since the

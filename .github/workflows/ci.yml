@@ -34,23 +34,25 @@ jobs:
       - name: Show some Cygwin packages
         run: cygcheck -cd python39 python39-pip python39-setuptools python39-wheel
 
-      - name: Show where the interpreter is
-        run: |
-          set -x
-          type python3.9
-          command -v python3.9 | od -An -ta
-
       - name: Upgrade PyPA packages systemwide
         run: |
           python3.9 -m pip install -U pip setuptools wheel
 
-      - name: Set up virtualenv
+      # - name: Set up virtual environment
+      #   run: |
+      #     python3.9 -m venv .venv
+      #     echo 'BASH_ENV=.venv/bin/activate' >>"$GITHUB_ENV"
+
+      - name: Set up virtual environment
         run: |
-          python3.9 -m venv .venv
-          echo 'BASH_ENV=.venv/bin/activate' >>"$GITHUB_ENV"
+          python3.9 -m venv --without-pip .venv
+          echo BASH_ENV=.venv/bin/activate >>"$GITHUB_ENV"
 
       - name: Show `$BASH_ENV` and `python` location
         run: |
           set -x
           printenv BASH_ENV
           type python
+
+      - name: Install pip
+        run: python -m ensurepip

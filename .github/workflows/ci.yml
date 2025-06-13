@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Force LF line endings in initial checkout
         shell: pwsh  # Do this outside Cygwin, to affect actions/checkout.
-        run: git config --global core.autocrlf input
+        run: git config --global core.autocrlf false
 
       - name: Check out repository
         uses: actions/checkout@v4

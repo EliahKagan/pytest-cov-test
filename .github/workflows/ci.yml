@@ -54,5 +54,9 @@ jobs:
           printenv BASH_ENV
           type python
 
+      - uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
+
       - name: Install pip
         run: python -m ensurepip

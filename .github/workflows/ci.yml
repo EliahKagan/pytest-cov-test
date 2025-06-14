@@ -7,6 +7,17 @@ permissions:
 
 jobs:
   test:
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.12']
+        include:
+          - python-version: '3.9'
+            python-cygwin-package: python39
+          - python-version: '3.12'
+            python-cygwin-package: python312
+
+      fail-fast: false
+
     runs-on: windows-latest
 
     env:
@@ -29,7 +40,7 @@ jobs:
         uses: cygwin/cygwin-install-action@v5
         with:
           packages: >-
-            python39
+            ${{ matrix.python-cygwin-package }}
             python-pip-wheel
             python-setuptools-wheel
             python-wheel-wheel
@@ -37,7 +48,7 @@ jobs:
 
       - name: Set up virtual environment
         run: |
-          python3.9 -m venv .venv
+          python${{ matrix.python-version }} -m venv .venv
           echo 'BASH_ENV=.venv/bin/activate' >>"$GITHUB_ENV"
 
       - name: Upgrade PyPA packages

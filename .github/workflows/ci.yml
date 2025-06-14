@@ -35,32 +35,17 @@ jobs:
             python-wheel-wheel
           add-to-path: false
 
-      - name: List all installed Cygwin packages
-        run: cygcheck -n
-
-      #- name: Upgrade PyPA packages systemwide
-      #  run: |
-      #    python3.9 -m pip install -U pip setuptools wheel
-
-      # - name: Set up virtual environment
-      #   run: |
-      #     python3.9 -m venv .venv
-      #     echo 'BASH_ENV=.venv/bin/activate' >>"$GITHUB_ENV"
-
       - name: Set up virtual environment
         run: |
-          python3.9 -m venv --without-pip .venv
-          echo BASH_ENV=.venv/bin/activate >>"$GITHUB_ENV"
+          python3.9 -m venv .venv
+          echo 'BASH_ENV=.venv/bin/activate' >>"$GITHUB_ENV"
 
-      - name: Show `$BASH_ENV` and `python` location
+      - name: Install project and dependencies
+        run: python -m pip install .
+
+      - name: Run failing test
         run: |
-          set -x
-          printenv BASH_ENV
-          type python
+          ! pytest --color=yes -vv test_indirect.py::test_subprocess
 
-      # - uses: mxschmitt/action-tmate@v3
-      #   with:
-      #     limit-access-to-actor: true
-
-      - name: Install pip
-        run: python -m ensurepip
+      - name: Run passing test
+        run: pytest --color=yes -vv test_indirect.py::test_subprocess_nosite

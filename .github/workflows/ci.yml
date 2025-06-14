@@ -12,9 +12,20 @@ jobs:
         python-version: ['3.9', '3.12']
         include:
           - python-version: '3.9'
-            python-cygwin-package: python39
+            cygwin-packages: >-
+              python39
+              python-pip-wheel
+              python-setuptools-wheel
+              python-wheel-wheel
           - python-version: '3.12'
-            python-cygwin-package: python312
+            cygwin-packages: >-
+              python312
+              python312-pip
+              python312-setuptools
+              python312-wheel
+              python-pip-wheel
+              python-setuptools-wheel
+              python-wheel-wheel
 
       fail-fast: false
 
@@ -39,11 +50,7 @@ jobs:
       - name: Install Cygwin
         uses: cygwin/cygwin-install-action@v5
         with:
-          packages: >-
-            ${{ matrix.python-cygwin-package }}
-            python-pip-wheel
-            python-setuptools-wheel
-            python-wheel-wheel
+          packages: ${{ matrix.cygwin-packages }}
           add-to-path: false
 
       - name: Set up virtual environment

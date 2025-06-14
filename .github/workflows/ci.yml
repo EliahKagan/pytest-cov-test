@@ -28,7 +28,7 @@ jobs:
       - name: Install Cygwin
         uses: cygwin/cygwin-install-action@v5
         with:
-          packages: python39 python39-devel python39-distlib python39-pip python39-setuptools python39-wheel
+          packages: python39 python39-devel python39-distlib python39-pip python39-setuptools python39-wheel python-pip-wheel
           add-to-path: false
 
       - name: List all installed Cygwin packages

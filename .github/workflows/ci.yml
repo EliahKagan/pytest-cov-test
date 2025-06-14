@@ -28,11 +28,11 @@ jobs:
       - name: Install Cygwin
         uses: cygwin/cygwin-install-action@v5
         with:
-          packages: python39, python39-pip, python39-setuptools, python39-wheel
+          packages: python39 python39-pip python39-setuptools python39-wheel
           add-to-path: false
 
-      - name: Show some Cygwin packages
-        run: cygcheck -cd python39 python39-pip python39-setuptools python39-wheel
+      - name: List all installed Cygwin packages
+        run: cygcheck -n
 
       - name: Upgrade PyPA packages systemwide
         run: |
@@ -54,9 +54,9 @@ jobs:
           printenv BASH_ENV
           type python
 
-      - uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
+      # - uses: mxschmitt/action-tmate@v3
+      #   with:
+      #     limit-access-to-actor: true
 
       - name: Install pip
         run: python -m ensurepip

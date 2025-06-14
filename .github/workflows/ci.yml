@@ -30,9 +30,6 @@ jobs:
         with:
           packages: >-
             python39
-            python39-pip
-            python39-setuptools
-            python39-wheel
             python-pip-wheel
             python-setuptools-wheel
             python-wheel-wheel

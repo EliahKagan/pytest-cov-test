@@ -40,8 +40,11 @@ jobs:
           python3.9 -m venv .venv
           echo 'BASH_ENV=.venv/bin/activate' >>"$GITHUB_ENV"
 
-      - name: Show what `python` and `pip` commands we will use
-        run: type python pip
+      - name: Upgrade PyPA packages
+        run: python -m pip install -U pip setuptools wheel
+
+      - name: Show what `pip` command we will use
+        run: type pip
 
       - name: Install project and dependencies
         run: pip install .

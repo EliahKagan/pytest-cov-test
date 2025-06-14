@@ -223,16 +223,6 @@ jobs:
             python-pip-wheel
             python-setuptools-wheel
             python-wheel-wheel
-            python312
-            python312-debuginfo
-            python312-devel
-            python312-doc
-            python312-packaging
-            python312-pip
-            python312-setuptools
-            python312-test
-            python312-tkinter
-            python312-wheel
             python39
             python39-babel
             python39-cachetools
